@@ -12,8 +12,25 @@ and open the template in the editor.
     <body>
         <?php
         
+        //array_count_values
         
+        //array_flip
         
+        //array_key_exists
+        
+        //array_map
+        
+        //array_rand
+        
+        //array_push
+        
+        //in_array
+        
+        //shuffle
+        
+        //count/sizeof
+        
+        //sort
         
         ?>
     </body>
