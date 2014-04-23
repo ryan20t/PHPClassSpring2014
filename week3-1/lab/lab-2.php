@@ -30,35 +30,39 @@ Goals:
         <?php
         // put your code here
         //print_r($_POST);
-            if ( !empty($_POST)) {
-                
-                $errorMessages = array(
-                  "email" => 'email is invalid',  
-                  "username" => 'username is not found',  
-                  "password" => 'password does not work'  
+        
+        $errorMessages = array(
+                  "email" => '',  
+                  "username" => '',  
+                  "password" => ''  
                 );
-                
-                //variable to hold posted data
-                $email = filter_input(INPUT_POST, 'email');
-                $username = filter_input(INPUT_POST, 'username');
-                //$password = filter_input(INPUT_POST, 'password');
-                
-                //blank variables to hold inputerror class
+        
+        //variable to hold posted data
+        $email = filter_input(INPUT_POST, 'email');
+        $username = filter_input(INPUT_POST, 'username');
+        $password = filter_input(INPUT_POST, 'password');
+        
+        //blank variables to hold inputerror class
                 $inputEmailErrorClass = "";
                 $inputUsernameErrorClass = "";
                 $inputPasswordErrorClass = "";
+        
+            if ( !empty($_POST)) {
                 
                 //if empty input, add inputerror class to variable to be echoed
                 if (empty($email)) {
                     $inputEmailErrorClass = "class='inputerror'";
+                    $errorMessages['email'] = 'email is invalid';
                 }//end if
                 
                 if (empty($username)){
                     $inputUsernameErrorClass = "class='inputerror'";
+                    $errorMessages['username'] = 'username is not found';
                 }//end if
                 
                 if (empty($password)){
                     $inputPasswordErrorClass = "class='inputerror'";
+                    $errorMessages['password'] = 'password does not work';
                 }//end if
              }//end if
         ?>
@@ -68,21 +72,22 @@ Goals:
        <form name="mainform" action="#" method="post">            
            Email: <input type="text" <?php echo $inputEmailErrorClass ?> name="email" value="<?php echo $email; ?>" /> <br /> 
             <?php 
-            if ( !empty($errorMessages["email"]) ) 
-                echo '<p class="error">',$errorMessages["email"], '</p>';
+            if ( !empty($errorMessages["email"]) ){ 
+            echo '<p class="error">',$errorMessages["email"], '</p>';}
             ?>
             Username: <input type="text" <?php echo $inputUsernameErrorClass ?> name="username" value="<?php echo $username; ?>" /> <br /> 
             <?php 
-            if ( !empty($errorMessages["username"]) )
-                echo '<p class="error">',$errorMessages["username"], '</p>';                
+            if ( !empty($errorMessages["username"]) ){
+            echo '<p class="error">',$errorMessages["username"], '</p>';}                
             ?>           
             Password: <input type="password" <?php echo $inputPasswordErrorClass ?> name="password" /> <br />
             <?php 
-            if ( !empty($errorMessages["password"]) )
-                echo '<p class="error">',$errorMessages["password"], '</p>';                
+            if ( !empty($errorMessages["password"]) ){
+            echo '<p class="error">',$errorMessages["password"], '</p>';}               
             ?>
             <br />
-            <input type="submit" value="Submit" />                        
+            <input type="submit" value="Submit" />   
+
         </form>
     </body>
 </html>
