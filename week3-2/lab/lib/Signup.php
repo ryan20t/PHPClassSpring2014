@@ -95,6 +95,13 @@ class Signup {
     public function usernameEntryIsValid() {
         
          //todo put logic here (same as email)
+        $username = $this->getUsername();
+        
+        if ( empty($username) ){
+            $this->errors["username"] = "Name is missing.";
+        } else if ( !Validator::usernameIsValid($this->getUsername()) ) {
+            $this->errors["username"] = "Name must be a string value.";
+        }
         
         return ( empty($this->errors["username"]) ? true : false ) ;
     }

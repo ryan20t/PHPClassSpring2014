@@ -33,7 +33,7 @@ class Validator {
     *
     * @return boolean
     */    
-    public static function nameIsValid($name) {
+    public static function usernameIsValid($name) {
         return ( is_string($name) && !empty($name) );       
     }
     
