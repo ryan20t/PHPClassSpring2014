@@ -45,7 +45,7 @@ class Validator {
     * @return boolean
     */    
     public static function passwordIsValid($password) {
-        
-        return false;
+        return ( is_string($password) && !empty($password) && (strlen($password) > 5) );
+        //return false;
     }
 }

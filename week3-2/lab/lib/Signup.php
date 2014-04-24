@@ -116,6 +116,18 @@ class Signup {
         
          //todo put logic here (same as email)
         // also check if it matches confirmpassword
+        $password = $this->getPassword();
+        $confirmpassword = $this->getConfirmpassword();
+        
+        if ( empty($password) ){
+            $this->errors["password"] = "Password is missing.";
+        } else if ( strlen($password) <= 5 ){
+            $this->errors["password"] = "Password must be at least 6 characters.";
+        }
+        
+        if ( $password != $confirmpassword ){
+            $this->errors["confirmpassword"] = "Password confirmation does not match.";
+        }
         
         return ( empty($this->errors["password"]) ? true : false ) ;
     }
