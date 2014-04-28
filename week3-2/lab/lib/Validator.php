@@ -27,9 +27,9 @@ class Validator {
     
     
      /**
-    * A static method to check if a name is valid.
+    * A static method to check if a username is valid.
     *
-    * @param string $name must be a valid name
+    * @param string $name must be a valid username
     *
     * @return boolean
     */    

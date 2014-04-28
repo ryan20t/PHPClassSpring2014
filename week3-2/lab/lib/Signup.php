@@ -145,8 +145,9 @@ class Signup {
     
     
     /**
-    * A method to check if a posted email is valid.
-    * Adds a custom message to the errors list key["email"]
+    * A method to check if posted info is valid.
+    * Adds custom messages to the errors list via 
+    * keys["email"], ["username"] and ["password"]
     *
     * @return boolean
     */ 
