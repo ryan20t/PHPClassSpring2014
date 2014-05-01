@@ -14,10 +14,12 @@ and open the template in the editor.
         // put your code here
         session_start();
         
+        $_SESSION['myVar'] = "hello";
         
-        echo $_SESSION['counter'];
-        echo $_SESSION['userid'];
-        echo $_SESSION['isloggedin'];
+        //$my_var = "hello";
+        
         ?>
+        
+        <a href="page2.php">Page2</a>
     </body>
 </html>
