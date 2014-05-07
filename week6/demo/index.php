@@ -8,19 +8,37 @@
     </head>
     <body>
         <?php
-        // put your code here
-        ?>
+        $msg = '';
+        if ( !isset($_SESSION['validcode']) )
+        {
+            $_SESSION['validcode'] = false;
+        }
         
-        <form name="mainform" action="#" method="post">
+        if ( UTIL::isPostRequest() )
+        {
+            $checkcode = new Passcode();
+            if ( $checkcode->isValidPasscode() )
+            {
+                $_SESSION['validcode'] = false;
+                Util::redirect('viewaddress');
+                die();
+            }
+            else
+            {
+                $msg = 'Passcode is not valid.';
+            }
+        }//end if
+
+        if (!empty($msg))
+        {
+            echo '<p>', $msg, '</p>';
+        }
+        ?><form name="mainform" action="#" method="post">
             <legend>Data Form:</legend>
-            <label for="passcode">Passcode</label>
-            <input name="passcode" id="passcode" />
+            <label for="code">Passcode</label>
+            <input type="password" name="passcode" id="code" />
             
             <input type="submit" value="Submit" />
-        </form>
-        
-        
-        
-        
+        </form> 
     </body>
 </html>

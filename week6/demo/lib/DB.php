@@ -13,6 +13,9 @@ class DB {
         if ( null != $this->db ) {
             return $this->db;
         }
+        
+        
+        
         try {
             $this->db = new PDO(Config::DB_DNS, Config::DB_USER, Config::DB_PASSWORD);
         } catch (Exception $ex) {
@@ -24,6 +27,10 @@ class DB {
      public function closeDB() {        
         $this->db = null;        
     }
-    
+    public function setDb($db) {
+        $this->db = $db;
+    }
+
+
     
 }

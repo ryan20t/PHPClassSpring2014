@@ -1,9 +1,11 @@
 <?php
 
-function loadClass($class) {
+ob_start();
+
+function load_lib($class) {
     include 'lib/'.$class . '.php';
 }
 
-spl_autoload_register(loadClass);
+spl_autoload_register(load_lib);
 
 session_start();
