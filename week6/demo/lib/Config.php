@@ -10,6 +10,6 @@ class Config {
     
     const   DB_DNS = "mysql:host=localhost;port=3306;dbname=phpspring2014",
             DB_USER  = "phpclass",
-            DB_PASSWORD  = "",
+            DB_PASSWORD  = "php",
             PASS_CODE = 'demo';
 }

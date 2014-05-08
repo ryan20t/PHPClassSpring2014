@@ -19,9 +19,8 @@
             $checkcode = new Passcode();
             if ( $checkcode->isValidPasscode() )
             {
-                $_SESSION['validcode'] = false;
+                $_SESSION['validcode'] = true;
                 Util::redirect('viewaddress');
-                die();
             }
             else
             {

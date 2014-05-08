@@ -9,3 +9,4 @@ function load_lib($class) {
 spl_autoload_register(load_lib);
 
 session_start();
+session_regenerate_id(true);
