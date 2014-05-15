@@ -17,6 +17,12 @@
          
          $addressResult = $address->read($id);
           print_r($addressResult);
+          
+          
+         
+          
+          
+          
         
         ?>
     </body>
