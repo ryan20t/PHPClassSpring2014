@@ -1,4 +1,4 @@
-
+<?php include 'dependency.php'; ?>
 <!DOCTYPE html>
 
 <html>
@@ -11,7 +11,7 @@
                  
         <h1 id="logo"><span>&#x2728;</span>SaaS Project</h1>
         
-        <div id="corner"><a href="?logout=1">Logout</a></div>
+        <div id="corner"><a href="login.php?logout=1">Logout</a></div>
         
          <fieldset>
         

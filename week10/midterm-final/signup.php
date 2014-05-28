@@ -1,4 +1,4 @@
-
+<?php include 'dependency.php'; ?>
 <!DOCTYPE html>
 
 <html>
@@ -8,20 +8,31 @@
          <link rel="stylesheet" type="text/css" href="css/admin.css" />
     </head>
     <body>
-                
+        
+        <?php
+        
+        $signup = new Signup();
+                    
+        $dataModel = new SignupModel(filter_input_array(INPUT_POST));
+              
+          if ( Util::isPostRequest() ) {
+            $id = $signup->save($dataModel);
+          }
+        
+        ?>
         
         <h1 id="logo"><span>&#x2728;</span>SaaS Project</h1>
         
         <fieldset>
             <legend>Signup</legend>
         <p> Already a member, <a href="login.php">Login</a></p>
-         <form name="mainform" action="#" method="post">
+        <form name="mainform" action="admin.php" method="post">
             
              
-                         <label>Web Site:</label> <input type="text" name="website" maxlength="30" /> <br />
+                         <label>Web Site:</label> <input type="text" name="website" maxlength="30" value="<?php echo $dataModel->getSitename(); ?>"/> <br />
              
             
-                          <label>Email:</label> <input type="text" name="email" /> <br />
+                          <label>Email:</label> <input type="text" name="email" value = "<?php echo $dataModel->getEmail(); ?>"/> <br />
             
                           <label>Password:</label> <input type="password" name="password" /> <br />
                

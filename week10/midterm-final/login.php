@@ -1,4 +1,4 @@
-
+<?php include 'dependency.php'; ?>
 <!DOCTYPE html>
 
 <html>
@@ -8,7 +8,16 @@
          <link rel="stylesheet" type="text/css" href="css/admin.css" />
     </head>
     <body>
-                
+        
+        <?php
+        
+        if ($_GET['logout'] === 1)
+        {
+            session_destroy();
+        }
+        
+        ?>
+        
         <h1 id="logo"><span>&#x2728;</span>SaaS Project</h1>
         
         <fieldset>

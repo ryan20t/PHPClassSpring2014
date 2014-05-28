@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 function load_lib($class) {
     include 'lib/'.$class . '.php';
 };

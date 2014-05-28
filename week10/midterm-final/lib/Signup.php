@@ -18,24 +18,25 @@ class Signup extends DB {
         $this->setDb();
     }
     
-     public function save( SignupModel $dataModel) {
+     public function save(SignupModel $dataModel) {
         $result = false;
          
         $email = $dataModel->getEmail();
-        $username = $dataModel->getUsername();
+        $website = $dataModel->getSitename();
         $password = sha1($dataModel->getPassword());
                
          if ( null !== $this->getDB() ) {
-            $dbs = $this->getDB()->prepare('insert into signup set username = :username, email = :email, password = :password');
-           $dbs->bindParam(':username', $username, PDO::PARAM_STR);
+            $dbs = $this->getDB()->prepare('insert into users set website = :website, email = :email, password = :password'); 
+           $dbs->bindParam(':website', $website, PDO::PARAM_STR); 
             $dbs->bindParam(':email', $email, PDO::PARAM_STR);
             $dbs->bindParam(':password', $password, PDO::PARAM_STR);
             
+             
             if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
                 $result = intval($this->getDB()->lastInsertId());
             } else {
-                $error = $dbs->errorInfo();
-                error_log($error[2], 3, "logs/errors.log");
+                //$error = $dbs->errorInfo();
+                //error_log("\n".$error[2], 3, "logs/errors.log");
             }
         
          }   
