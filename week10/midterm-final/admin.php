@@ -8,10 +8,21 @@
         <link rel="stylesheet" type="text/css" href="css/admin.css" />
     </head>
     <body>
-                 
+               
+        <?php
+        
+        Util::confirmAccess();
+        
+        
+        ?>
+        
+        
+        
+        
+        
         <h1 id="logo"><span>&#x2728;</span>SaaS Project</h1>
         
-        <div id="corner"><a href="login.php?logout=1">Logout</a></div>
+        <div id="corner"><a href="signup.php?logout=1">Logout</a></div>
         
          <fieldset>
         
