@@ -4,29 +4,50 @@
     <head>
         <meta charset="UTF-8">
         <title>Demo Page</title>
-        <link rel="stylesheet" type="text/css" href="css/theme2.css" />
+        <?php
+        
+        
+        
+        if (isset($_SESSION['id'])){
+            $siteInfoModel = new GetUpdateSite();
+            $siteInfo = $siteInfoModel->getSiteInfo();
+            
+            $loggedin = true; 
+        }
+        
+        if ($loggedin){
+            $theme = $siteInfo['theme'];
+        }
+        else{
+            $theme = "theme2";
+        }
+        
+        
+        ?>
+        <link rel="stylesheet" type="text/css" href="<?php echo 'css/'.$theme.'.css' ?>" />
     </head>
     <body>
         
         
         <?php
         
+        /*
+        
         if (isset($_SESSION['id'])){
             $siteInfoModel = new GetUpdateSite();
             $siteInfo = $siteInfoModel->getSiteInfo();
             
-            $loggedin = true;
-            
-            
+            $loggedin = true; 
         }
         
-        if ($_GET['logout' == 1]){
-            die();
-            $_SESSION['id'] = null;
+        if (loggedin){
+            $theme = $siteInfo['theme'];
+        }
+        else{
+            $theme = "theme2";
         }
         
-        
-        
+        */
         ?>
         
         

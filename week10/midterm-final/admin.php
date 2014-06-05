@@ -10,7 +10,7 @@
     <body>
                
         <?php
-        
+        Util::checkLogout();
         Util::confirmAccess();
         
         $siteInfoModel = new GetUpdateSite();
@@ -42,12 +42,12 @@
         ?>
         
         
-        
+        //<?php if ($siteInfo['theme'] === "theme1"){echo 'selected="selected"';} ?>
         
         
         <h1 id="logo"><span>&#x2728;</span>SaaS Project</h1>
         
-        <div id="corner"><a href="signup.php?logout=1">Logout</a></div>
+        <div id="corner"><a href="?logout=1">Logout</a></div>
         
          <fieldset>
         
@@ -62,9 +62,9 @@
             
              <label> Title:</label> <input type="text" name="title" value="<?php echo $siteInfo['title']; ?>" /><br />            
              <label> Theme:</label> <select name="theme">
-                <option value="theme1" selected="selected">Theme 1</option>
-                <option value="theme2" >Theme 2</option>
-                <option value="theme3" >Theme 3</option>
+                <option value="theme1" <?php if ($siteInfo['theme'] === "theme1"){echo 'selected="selected"';} ?>>Theme 1</option>
+                <option value="theme2" <?php if ($siteInfo['theme'] === "theme2"){echo 'selected="selected"';} ?>>Theme 2</option>
+                <option value="theme3" <?php if ($siteInfo['theme'] === "theme3"){echo 'selected="selected"';} ?>>Theme 3</option>
                  </select>
             <br />
             

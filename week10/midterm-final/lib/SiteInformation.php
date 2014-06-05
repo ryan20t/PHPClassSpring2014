@@ -18,7 +18,7 @@ class SiteInformation  {
         
         private $info = array(
             "title" => "My Title",
-            "theme" => "Theme 1",
+            "theme" => "theme1",
             "address" => "123 Fake Street",
             "phone" => "5555555555",
             "email" => "My Contact Email",

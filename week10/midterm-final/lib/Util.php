@@ -54,12 +54,23 @@ class Util {
     }
     
     public static function confirmAccess() {
-        if ( !isset($_SESSION['validcode']) || !$_SESSION['validcode'] ) {
+        if ( !isset($_SESSION['id']) || !$_SESSION['id'] ) {
            Util::redirect('signup');
         }
     }
     
-    
+    public static function checkLogout() {
+        
+        $logout = filter_input(INPUT_GET, 'logout');
+        
+        
+        
+        if ( $logout == 1 ) {
+           $_SESSION['id'] = null;
+            session_destroy();
+        }
+        
+    }
     
     
 }
