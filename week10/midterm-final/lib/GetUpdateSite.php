@@ -28,6 +28,21 @@ class GetUpdateSite extends DB {
         return $result;
     }
     
+    public function getWebsite()
+    {
+        if ( null !== $this->getDB() ) {
+            $dbs = $this->getDB()->prepare('select website from users where user_id = :user_id limit 1');
+            $dbs->bindParam(':user_id', $_SESSION['id'], PDO::PARAM_INT);
+            
+            if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
+                $result = $dbs->fetch(PDO::FETCH_ASSOC);
+                $name = $result['website'];
+            }
+            
+        }
+        return $name;
+    }
+    
     public function updateSite(array $site)
     {
         $result = false;

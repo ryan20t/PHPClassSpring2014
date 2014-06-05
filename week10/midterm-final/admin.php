@@ -34,10 +34,10 @@
            {
                $message = "Update failed";
            }
+
         }
-        //var_dump($siteInfo);
-        var_dump($_SESSION);
         
+        $siteName = $siteInfoModel->getWebsite();
         
         ?>
         
@@ -54,7 +54,7 @@
         <legend> Edit your Page</legend>
                 
         
-        <div id="preview"> <a href="index.php?page=truffle" target="popup">View Page</a></div>
+        <div id="preview"> <a href="<?php echo 'index.php?page='.$siteName ?>" target="popup">View Page</a></div>
         
         <span id="updateMessage"><?php echo $message; ?></span>
         
