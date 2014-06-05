@@ -13,6 +13,31 @@
         
         Util::confirmAccess();
         
+        $siteInfoModel = new GetUpdateSite();
+        $siteInfo = $siteInfoModel->getSiteInfo();
+        
+        if ( Util::isPostRequest() ) {
+            
+           $updatedInfo = filter_input_array(INPUT_POST);
+           $siteInfo['title'] = $updatedInfo['title'];  
+           $siteInfo['theme'] = $updatedInfo['theme'];  
+           $siteInfo['address'] = $updatedInfo['address'];  
+           $siteInfo['phone'] = $updatedInfo['phone'];  
+           $siteInfo['email'] = $updatedInfo['email'];              
+           $siteInfo['content'] = $updatedInfo['about']; 
+           
+           $updated = $siteInfoModel->updateSite($siteInfo);
+           if ($updated){
+               $message = "Site updated successfully.";
+           }
+           else
+           {
+               $message = "Update failed";
+           }
+        }
+        //var_dump($siteInfo);
+        var_dump($_SESSION);
+        
         
         ?>
         
@@ -31,9 +56,11 @@
         
         <div id="preview"> <a href="index.php?page=truffle" target="popup">View Page</a></div>
         
+        <span id="updateMessage"><?php echo $message; ?></span>
+        
          <form name="mainform" action="#" method="post">
             
-             <label> Title:</label> <input type="text" name="title" value="title" /><br />            
+             <label> Title:</label> <input type="text" name="title" value="<?php echo $siteInfo['title']; ?>" /><br />            
              <label> Theme:</label> <select name="theme">
                 <option value="theme1" selected="selected">Theme 1</option>
                 <option value="theme2" >Theme 2</option>
@@ -41,17 +68,17 @@
                  </select>
             <br />
             
-            <label> Address:</label> <input type="text" name="address" value="address" /><br /> 
-            <label> Phone:</label> <input type="text" name="phone" value="phone" /><br /> 
-            <label> Email:</label> <input type="text" name="email" value="email" /><br /> 
+            <label> Address:</label> <input type="text" name="address" value="<?php echo $siteInfo['address']; ?>" /><br /> 
+            <label> Phone:</label> <input type="text" name="phone" value="<?php echo $siteInfo['phone']; ?>" /><br /> 
+            <label> Email:</label> <input type="text" name="email" value="<?php echo $siteInfo['email']; ?>" /><br /> 
             <label> About:</label><br />
-            <textarea name="about" cols="50" rows="10">about</textarea><br /> 
+            <textarea name="about" cols="50" rows="10"><?php echo $siteInfo['content']; ?></textarea><br /> 
             
             <input type="submit" value="Submit" />
             
         </form>
         
-         </fieldset>
+        </fieldset>
         
     </body>
 </html>

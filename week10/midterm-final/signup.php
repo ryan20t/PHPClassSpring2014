@@ -32,7 +32,7 @@
                     { 
                         $_SESSION['validcode'] = true;
                         $site = $login->getSiteName();
-                        header("Location: admin.php?site=$site");
+                        header("Location: admin.php");
                     }
                 }
             }
@@ -46,7 +46,7 @@
                         $_SESSION['validcode'] = true;
                         
                         $site = $login->getSiteName();
-                        header("Location: admin.php?site=$site");
+                        header("Location: admin.php");
                     }
                     
                      

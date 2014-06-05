@@ -59,7 +59,7 @@ class Login extends DB {
         $isCorrect = false;
         
         if ( null !== $this->getDB() ){
-            $dbs = $this->getDB()->prepare('select password from users where email = :email limit 1');
+            $dbs = $this->getDB()->prepare('select user_id, password from users where email = :email limit 1');
             $dbs->bindParam(':email', $email, PDO::PARAM_STR);
             
             if ( $dbs->execute() && $dbs->rowCount() > 0){
@@ -69,6 +69,7 @@ class Login extends DB {
             $checkpw = sha1($model->getPassword());
             if ($results['password'] == $checkpw){
                 $isCorrect = true;
+                $_SESSION['id'] = $results['user_id'];
             }
             
         }

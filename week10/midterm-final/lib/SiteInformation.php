@@ -11,14 +11,28 @@
  *
  * @author ryan
  */
-class SiteInformation extends DB {
+class SiteInformation  {
     //put your code here
     
-    function __construct() {
-        $this->setDb();
+        
+        
+        private $info = array(
+            "title" => "My Title",
+            "theme" => "Theme 1",
+            "address" => "123 Fake Street",
+            "phone" => "5555555555",
+            "email" => "My Contact Email",
+            "content" => "My Content Here",
+            "active" => 1           
+        );
+    
+        public function getInfo() {
+            return $this->info;
+        }
+
+            function __construct() {
+        
     }
 
-    
-    
-    
+
 }
